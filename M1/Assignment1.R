@@ -32,6 +32,7 @@ for (worker in workers) {
         ", Salary=", worker$salary, ", Sex=", worker$sex,
         ", Level=", worker$level, "\n", sep = "")
   }, 
+  
   # Exception handling for potential errors
   error = function(e) {
     cat("Error processing worker", worker$id, ":", conditionMessage(e), "\n")
