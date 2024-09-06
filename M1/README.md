@@ -15,8 +15,8 @@ This repository has two files, Python and R scripts. They are both doing the sam
 - It also does not require any external libraries
 
 ## Instructions:
-1. Open and run the `Assignment1.py` Python script in any Python environment such as Python's IDLE.
-2. Open and run the `Assignment1.R` R script in any R environment such as the default R environment.
+- Open and run the `Assignment1.py` Python script in any Python environment such as Python's IDLE.
+- Open and run the `Assignment1.R` R script in any R environment such as the default R environment.
 
 ## Note
 - I opted to put the second given condition on top since it is more specific than the first and will be, for the most part, missed if we put the first conition on top since also their ranges largely intersects.
