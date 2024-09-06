@@ -29,6 +29,6 @@ for worker in workers:
         print(f"Pay slip: ID={worker['id']}, Name={worker['name']}, "
               f"Salary=${worker['salary']}, Sex={worker['sex']}, Level={worker['level']}")
     
+    # Exception handling for potential errors
     except Exception as e:
-        # Exception handling for potential errors
         print(f"Error processing worker {worker['id']}: {e}")
