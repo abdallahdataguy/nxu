@@ -7,7 +7,7 @@ This repository has two files, Jupyter notebook Python file and R script.
 - Exception handling is included.
 - It does requires three libraries to run, `os`, `pandas`, and `zipfile` with `pandas` being the only external library out of three that requires separate installation as it is not a standard library.
 - The `filter_employee_data` function returns a dictionary of filtered employee's data.
-- The program then processes data by turning `EpmloyeeName` and `JobTitle` to a proper case using dictionary approach and creates a data frame of processed filtered employee's data and exports it as csv file named `Employee Profile.csv` in the same directory.
+- The program then processes data by turning `EpmloyeeName` and `JobTitle` columns to a proper case using dictionary approach and creates a data frame of processed filtered employee's data and exports it as csv file named `Employee Profile.csv` in the same directory.
 - Using `zipfile` module creates a zipped file named `Employee Profile.zip` containing `Employee Profile.csv` csv file.
 - Deletes a csv file `Employee Profile.csv` using `os` module's `remove` function.
 
