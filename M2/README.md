@@ -1,7 +1,7 @@
 # Module 2 Assignment: Salary Function
 This repository has two files, Jupyter notebook Python script and R scripts
 
-## Python Script (Jupyter notebook): Assignment1.ipynb
+## Python Script (Jupyter notebook): Assignment2.ipynb
 - Reads a csv file "Total.csv" in the current directory as a data frame df.
 - Creates a function named "filter_employee_data" with one parameter "employee_name" that filters a data frame "df" based on "employee_name" value provided. Example name "GARY JIMENEZ" has been left in the code for testing
 - Exception handling is included.
