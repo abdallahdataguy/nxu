@@ -12,11 +12,11 @@ This repository has two files, Jupyter notebook Python file and R script.
 - Deletes a csv file `Employee Profile.csv` using `os` module's `remove` function.
 
 ## R Script: Assignment2.R
-- It uses the functions `unzip`, `unz` and `read.csv` from the standard library `utils` for unzipping the file `Employee Profile.zip` created in the Python script and reading and printing the contents of the `Employee Profile.csv`.
+- It uses the functions `unzip`, `unz` and `read.csv` from the standard library `utils` for unzipping the file `Employee Profile.zip` created in the Python script, reading and printing the contents of the `Employee Profile.csv` contained inside `Employee Profile.zip` file.
 - It does not require any non-standard libraries to run.
 
 ## Instructions:
-- Put a jupyter notebook file, R script, and `Total.csv` file in the same folder to help Python read the file `Total.csv` and saves `Employee Profile.csv` and `Employee Profile.zip` in the same folder using relative file path.
+- Put a jupyter notebook file, R script, and `Total.csv` file in the same folder to help Python read the file `Total.csv` and saves `Employee Profile.csv` and `Employee Profile.zip` in the same folder using relative file paths.
 - Open and run the `Assignment2.ipynb` file using Jupyter or any program that can read jupyter notebook files like Visual Studio Code and Jupyter notebook IDEs.
 - Open R script in any R IDE and set the current working directory as the folder where the R script is located. this ensures that it reads the file `Employee Profile.zip` in the same folder using relative file path.
 - Open and run the `Assignment2.R` R script in any R environment such as the default R environment.
