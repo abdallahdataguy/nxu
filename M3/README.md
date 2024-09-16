@@ -14,8 +14,8 @@ This project includes five key files that together make up a policy management s
 - The system also makes payment processing easy and can automatically send reminders to policyholders when payments are due.
 
 ## Features:
-1. Policyholder management class for enabling adding, suspending or reactivating policyholders.
-2. Product management class for facilitating creating, updating, or suspending insurance products.
+1. Policyholder management class for adding, suspending or reactivating policyholders.
+2. Product management class for creating, updating, or suspending insurance products.
 3. Payment management class that helps in payments processing, sending payments reminders and applying penalties to late payments.
 4. System demonstration program helps demonstrating the functionalities of the above three classes by creating two policyholders, registering them with different products and then process their payments.
 
