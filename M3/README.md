@@ -21,7 +21,9 @@ This project includes five key files that together make up a policy management s
 
 ## Prerequisites:
 - Make sure you have Python installed on your machine. You can check if Python is installed (and verify the version) by running the following command in your terminal (e.g., Windows Command Prompt or Windows PowerShell in Windows environments):
-- `python --version`
+   - `python --version`
+- You can also open windows start menu and search IDLE or Python. If you see IDLE as an installed program, then you are sure that a Python is installed in your machine.
+- Kindly make sure that you have Python 3 installed in you computer as some of the features in this program is based on Python 3.
 
 ## Installation Steps:
 1. Clone this repository or download the ZIP file.
