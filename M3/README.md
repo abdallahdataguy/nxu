@@ -3,10 +3,11 @@
 This project includes five key files that together make up a simple yet functional Policy Management System for an insurance company.
 
 ## File Descriptions:
-1. policyholder.py: This file contains the Policyholder class, which handles all details related to policyholders, including their status (active, suspended, etc.).
-2. product.py: Defines the Product class, which outlines the insurance products offered.
-3. payment.py: Contains the Payment class, responsible for processing payments, sending reminders, and managing penalties for late payments.
-4. main.py: Demonstrates how the system works by creating policyholders, registering them for insurance products, processing payments, and displaying account information.
+1. `policyholder.py`: This file contains the Policyholder class, which handles all details related to policyholders, including their status (active, suspended, etc.).
+2. `product.py`: Defines the Product class, which outlines the insurance products offered.
+3. `payment.py`: Contains the Payment class, responsible for processing payments, sending reminders, and managing penalties for late payments.
+4. `main.py`: Demonstrates how the system works by creating policyholders, registering them for insurance products, processing payments, and displaying account information.
+5. `README.md`: This readme file
 
 ## Overview:
 - This project serves as a basic Policy Management System designed for insurance companies. It helps policy managers handle tasks like adding or suspending policyholders, registering new members, and managing different insurance products. The system also processes payments and can send reminders to policyholders when payments are due.
