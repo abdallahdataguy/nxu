@@ -37,8 +37,8 @@ This project includes five key files that together make up a policy management s
 To run the project, follow these steps:
 1. Navigate to the folder containing the files.
 2. Run the following command in your terminal:
-- `python main.py`
-- Alternatively, you can open the `main.py` file in a Python IDE (such as the built-in IDLE), and run the module by pressing F5.
+   - `python main.py`
+   - Alternatively, you can open the `main.py` file in a Python IDE (such as the built-in IDLE), and run the module by pressing F5.
 
 ## Once the project runs, the system will:
 - Create two policyholders.
