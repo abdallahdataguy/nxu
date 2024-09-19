@@ -45,4 +45,5 @@ To run the project, follow these steps:
 3. After Python script is executed, open R script named `Assignment4.R` in any R environment, Rstudio preferred.
 4. In RStudio, right click the tab of the opened R file and select "Set Working Directory".
    - This option sets the directory where the opened R script is contained as the current working directory.
-   - This option helps R read the rest of the files relative to the R script removing the neccessity of specifying full file paths. 
+   - This option helps R read the rest of the files relative to the R script removing the neccessity of specifying full file paths.
+5. Run the `Assignment4.R` script.
