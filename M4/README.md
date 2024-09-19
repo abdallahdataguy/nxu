@@ -1,9 +1,9 @@
 # Module 4 Assignment: Netflix Data Visualization
 
-This project includes four files.
+This project includes four files, a Python file `Assignment4.py`, R script `Assignment4.R`, zip file `netflix_data.zip` and a readme file `README.md`.
 
 ## File Descriptions:
-1. `Assignment4.py`: This file does the most data processing as follows:
+1. `Assignment4.py`: This Python file does the following:
    - Reads a zipped archive `netflix_data.zip` and extracts a csv file named `netflix_data.csv`.
    - Renames the csv file and save it to the current working directory as `Netflix_shows_movies.csv`
    - Opens the saved csv file, cleanses it by renaming a column `listed_in`  to 'Genre'
@@ -15,7 +15,7 @@ This project includes four files.
    - Saves a genre counts as a csv file `most_watched_genres.csv` for use in R visuals
 3. `Assignment4.R`: The file contains an R script that does the following:
    - Reads a csv file named 'most_watched_genres.csv'
-   - Renames the columns as to "Genre" and "Count"
+   - Renames the columns to "Genre" and "Count"
    - Creates a bar chart of the Top ten most viewed genres using genre counts
 5. `netflix_data.zip`: The file contains Netflix data used in this project
 6. `README.md`: This readme file that explains how this program works including file descriptions and how to run the program
@@ -24,11 +24,11 @@ This project includes four files.
 - This project uses Netflix data to provide visual analytics aimed at gaining insights from the Netflix data provided.
 
 ## Prerequisites:
-- Make sure you have Python 3 and R installed on your machine.
+- Make sure you have Python 3 and R and their required libraries installed in your machine.
 
 ## Installation Steps:
 1. Clone this repository or download the ZIP file.
-2. Extract the ZIP file (if downloaded).
+2. Extract the zip file (if downloaded).
 3. Ensure that the following files are in the same directory:
    - `Assignment4.py`
    - `Assignment4.R`
