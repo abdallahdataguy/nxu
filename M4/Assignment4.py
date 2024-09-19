@@ -32,7 +32,7 @@ df = pd.read_csv('Netflix_shows_movies.csv')
 # Update the dataset by setting the missing data values to Unknown
 df = df.fillna('Unknown')
 
-# Rename the column 'listed_in' to 'Genres'
+# Rename the column 'listed_in' to 'Genre'
 df = df.rename(columns={'listed_in': 'Genre'})
 
 # Confirm there are no missing values left
