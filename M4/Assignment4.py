@@ -82,7 +82,7 @@ sns.barplot(
     x=rating_counts.index, 
     y=rating_counts.values, 
     palette="coolwarm", 
-    hue=rating_counts.index,  # Assign x variable to hue
+    hue=rating_counts.index,
     dodge=False,  # Disable dodge to prevent splitting bars
     legend=False  # Disable the legend
 )
