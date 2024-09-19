@@ -8,14 +8,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Step 1: Data Preparation
-# Unzip the dataset
-folder = r'C:\Users\ABDALLAH\Documents\GitHub\nxu\M4'
-os.chdir(folder) # Set the folder as cwd
-
 # Remove netfilx_data.csv if it exists
 if os.path.exists('netflix_data.csv'):
     os.remove('netflix_data.csv')
 
+# Unzip the dataset
 # Extract the file
 try:
     with zipfile.ZipFile('netflix_data.zip', 'r') as zip_ref:
