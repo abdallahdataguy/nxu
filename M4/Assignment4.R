@@ -1,3 +1,4 @@
+# Step 5: R Integration
 # Load necessary libraries
 library(ggplot2)
 
