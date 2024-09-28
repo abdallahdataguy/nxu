@@ -41,7 +41,7 @@
 - Make sure you install Python 3.x.
 
 ### Required Python Packages:
-1. Install Python Libraries:
+Install Python Libraries:
    Install the following libraries:
    - Keras: Install the latest version of Keras:
      ```bash
@@ -51,10 +51,5 @@
      ```bash
      pip install tensorflow
      ```
-2. Link R to Python Environment: 
-   In R, ensure the Python environment is correctly configured using the `reticulate` package:
-   ```r
-   library(reticulate)
-   use_virtualenv("my_keras_env", required = TRUE)  # for virtualenv
-   # OR
-   use_condaenv("my_keras_env", required = TRUE)  # for conda
+## Running the scripts
+- vvvv
