@@ -1,45 +1,71 @@
-# Load Keras library
+# Load necessary libraries
 library(keras)
 
-# Load Fashion MNIST dataset
+# Load the Fashion MNIST dataset
 fashion_mnist <- dataset_fashion_mnist()
-c(train_images, train_labels) %<-% fashion_mnist$train
-c(test_images, test_labels) %<-% fashion_mnist$test
+x_train <- fashion_mnist$train$x
+y_train <- fashion_mnist$train$y
+x_test <- fashion_mnist$test$x
+y_test <- fashion_mnist$test$y
 
-# Preprocess data: reshape and normalize
-train_images <- array_reshape(train_images, c(nrow(train_images), 28, 28, 1))
-test_images <- array_reshape(test_images, c(nrow(test_images), 28, 28, 1))
-train_images <- train_images / 255
-test_images <- test_images / 255
+# Preprocess the data
+x_train <- array_reshape(x_train, c(60000, 28, 28, 1)) / 255
+x_test <- array_reshape(x_test, c(10000, 28, 28, 1)) / 255
 
-# Build the CNN model
+# Convert labels to categorical one-hot encoding
+y_train <- to_categorical(y_train, num_classes = 10)
+y_test <- to_categorical(y_test, num_classes = 10)
+
+# Define the CNN model
 model <- keras_model_sequential() %>%
   layer_conv_2d(filters = 32, kernel_size = c(3, 3), activation = 'relu', input_shape = c(28, 28, 1)) %>%
   layer_max_pooling_2d(pool_size = c(2, 2)) %>%
   layer_conv_2d(filters = 64, kernel_size = c(3, 3), activation = 'relu') %>%
   layer_max_pooling_2d(pool_size = c(2, 2)) %>%
-  layer_conv_2d(filters = 64, kernel_size = c(3, 3), activation = 'relu') %>%
+  layer_conv_2d(filters = 128, kernel_size = c(3, 3), activation = 'relu') %>%
   layer_flatten() %>%
-  layer_dense(units = 64, activation = 'relu') %>%
+  layer_dense(units = 128, activation = 'relu') %>%
+  layer_dropout(rate = 0.5) %>%
   layer_dense(units = 10, activation = 'softmax')
 
 # Compile the model
 model %>% compile(
   optimizer = 'adam',
-  loss = 'sparse_categorical_crossentropy',
+  loss = 'categorical_crossentropy',
   metrics = c('accuracy')
 )
 
 # Train the model
-model %>% fit(train_images, train_labels, epochs = 5, batch_size = 64)
+model %>% fit(x_train, y_train, epochs = 10, batch_size = 64, validation_split = 0.2)
 
-# Save the model
-save_model_hdf5(model, 'fashion_mnist_cnn_r.h5')
+# Evaluate the model on the test dataset
+scores <- model %>% evaluate(x_test, y_test)
+cat(sprintf("Test loss: %.4f, Test accuracy: %.4f\n", scores[[1]], scores[[2]]))
 
-# Make predictions on two test images
-predictions <- model %>% predict(test_images[1:2,,])
+# Define a mapping from class indices to class names
+class_names <- c(
+  "T-shirt/top",
+  "Trouser",
+  "Pullover",
+  "Dress",
+  "Coat",
+  "Sandal",
+  "Shirt",
+  "Sneaker",
+  "Bag",
+  "Ankle boot"
+)
 
-# Print predicted and actual labels
-predicted_labels <- apply(predictions, 1, which.max) - 1
-cat("Predicted labels: ", predicted_labels, "\n")
-cat("Actual labels: ", test_labels[1:2], "\n")
+# Make predictions for the first two images in the test set
+predictions <- model %>% predict(x_test[1:2, , , ])
+predicted_classes <- apply(predictions, 1, which.max) - 1  # R indexing starts from 1
+
+# Display the predicted classes
+cat(sprintf("Predicted classes for the first two images: %s\n", toString(predicted_classes)))
+
+# Plot the first two test images and their predicted class names
+par(mfrow = c(1, 2))
+for (i in 1:2) {
+  image(x_test[i, , , 1], axes = FALSE, col = gray.colors(256))
+  title(main = sprintf("Predicted: %s (Class %d)", class_names[predicted_classes[i] + 1], predicted_classes[i]))
+}
