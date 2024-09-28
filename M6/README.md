@@ -14,6 +14,7 @@
 
 ### R Programming Environment
 - R Version: Install the latest R software which can be dowloaded from the official R website here: https://cran.r-project.org/.
+- Rstudio (Optional): Install Rstudio, the most popular IDE for R by dowloading here: https://posit.co/download/rstudio-desktop/ 
 
 ### Required R Packages
 - Keras R library that will provide an R interface to the Keras Python library.
@@ -35,7 +36,7 @@
     ```
 ## 3. Python requirements
 - In to successfully run this CNN model in Python, the following software packages should be installed and properly configured:
-- 
+
 ### Python Programming Environment
 - Python Version: Install Python by downloading it from the official website here: https://www.python.org/downloads/
 - Make sure you install Python 3.x.
@@ -51,5 +52,11 @@ Install Python Libraries:
      ```bash
      pip install tensorflow
      ```
-## Running the scripts
-- vvvv
+## 4. Running the scripts
+### Running R File
+- Make sure you have R and all the required libraries installed, follow the step `2. R Requirements`
+- Open the R file `Assignment6.R` in any R environment, RStudio recommended, and run the script
+
+### Running Python File
+- Make sure you have Python and all the required libraries installed, follow the step `3. Python Requirements`
+- Open the Python file `Assignment6.py` in any Python environment, built-in IDLE can suffice, and run the script
