@@ -1,4 +1,4 @@
-# Fashion MNIST Classification using CNN
+# Module 6 Assignment: Fashion MNIST Classification
 
 ## 1. Overview
 
