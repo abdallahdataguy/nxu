@@ -14,7 +14,7 @@
 ### R Programming Environment
 - R Version: Install the latest R software which can be dowloaded from the official R website here: https://cran.r-project.org/.
 
-### 2. Required R Packages
+### Required R Packages
 - Keras R library that will provide an R interface to the Keras Python library.
   - Install Keras in R:
     ```r
@@ -27,32 +27,19 @@
     library(tensorflow)
     install_tensorflow()
     ```
-- Reticulate: This package integrates Python into R, enabling the use of Keras (which is a Python library) inside R.
+- Reticulate: This package enables the use of Keras (which is a Python library) inside R. It allows R to use Python libraries not only keras.
   - Install `reticulate`:
     ```r
     install.packages("reticulate")
     ```
+## Python requirement
 
-### 3. Python Backend
-
-Keras in R relies on a Python backend, as Keras is a Python library. Therefore, you must have Python installed and configured to run Keras in R.
+- You must have Python installed to run the Python script and so that R can use it to run keras in R environment as keras is a Python library.
+- Install the neccessary Python libraries
 
 #### Steps:
-1. Install Python: Download Python 3 from the official website [here](https://www.python.org/downloads/). Make sure you install Python 3.x.
-   
-2. Virtual Environment (Optional but Recommended): Use a virtual environment to manage Python dependencies.
-   - Create a virtual environment:
-     ```bash
-     virtualenv my_keras_env
-     source my_keras_env/bin/activate  # On Windows: my_keras_env/Scripts/activate
-     ```
-   - Alternatively, create a conda environment:
-     ```bash
-     conda create -n my_keras_env python=3.8
-     conda activate my_keras_env
-     ```
-
-3. Install Python Libraries:
+1. Install Python by downloading it from the official website here: https://www.python.org/downloads/) or by installing  anaconda. Make sure you install Python 3.x.
+2. Install Python Libraries:
    Inside your Python virtual environment, install the following libraries:
    - Keras: Install the latest version of Keras:
      ```bash
@@ -62,8 +49,7 @@ Keras in R relies on a Python backend, as Keras is a Python library. Therefore, 
      ```bash
      pip install tensorflow
      ```
-
-4. Link R to Python Environment: 
+3. Link R to Python Environment: 
    In R, ensure the Python environment is correctly configured using the `reticulate` package:
    ```r
    library(reticulate)
