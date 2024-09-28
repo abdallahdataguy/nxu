@@ -53,6 +53,7 @@ Install Python Libraries:
      pip install tensorflow
      ```
 ## 4. Running the scripts
+- Running this script for the first time, ensure that you are connected to the internet so that the Fashion MNIST dataset can be downloaded
 ### Running R File
 - Make sure you have R and all the required libraries installed, follow the step `2. R Requirements`
 - Open the R file `Assignment6.R` in any R environment, RStudio recommended, and run the script
