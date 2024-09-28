@@ -59,4 +59,4 @@ Install Python Libraries:
 
 ### Running Python File
 - Make sure you have Python and all the required libraries installed, follow the step `3. Python Requirements`
-- Open the Python file `Assignment6.py` in any Python environment, built-in IDLE can suffice, and run the script
+- Open the Python file `Assignment6.py` in any Python environment, built-in IDLE recommended, and run the script
