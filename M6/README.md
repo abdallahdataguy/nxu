@@ -2,22 +2,25 @@
 
 ## Overview
 
-This project demonstrates how to build and train a Convolutional Neural Network (CNN) using Keras in R and Python to classify images from the Fashion MNIST dataset. The dataset contains 70,000 grayscale images of 28x28 pixels, representing 10 fashion categories. The CNN model is built with six layers and is trained to predict the correct class for the images.
+- This project is about implementing a Convolutional Neural Network (CNN) in Python and R to classify images in MNIST dataset.
+- The project shoes  how to build and train a CNN using Keras in R and Python
+- The MNIST dataset contains 70,000 grayscale images of 28x28 pixels, representing 10 fashion categories.
+- The 6 layers CNN model is trained to correctly predict classes for the images.
 
 ## Requirements
 
-To successfully run the CNN model in R and Python, you must have the following software and packages installed and configured:
+- In to successfully run this CNN model, the following software packages should be installed and properly configured:
 
-### 1. R Programming Environment
-- R Version: The latest version of R is recommended for compatibility with the latest packages. You can download it from [here](https://cran.r-project.org/).
+### R Programming Environment
+- R Version: Install the latest R software which can be dowloaded from the official R website here: https://cran.r-project.org/.
 
 ### 2. Required R Packages
-- Keras: Provides an R interface to the Keras Python library.
+- Keras R library that will provide an R interface to the Keras Python library.
   - Install Keras in R:
     ```r
     install.packages("keras")
     ```
-- TensorFlow: Required for running Keras in R since Keras relies on TensorFlow as its backend.
+- TensorFlow is also required since keras relies on TensorFlow as its backend.
   - Install TensorFlow in R:
     ```r
     install.packages("tensorflow")
