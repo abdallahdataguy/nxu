@@ -1,15 +1,16 @@
 # Fashion MNIST Classification using CNN
 
-## Overview
+## 1. Overview
 
 - This project is about implementing a Convolutional Neural Network (CNN) in Python and R to classify images in MNIST dataset.
 - The project shoes  how to build and train a CNN using Keras in R and Python
 - The MNIST dataset contains 70,000 grayscale images of 28x28 pixels, representing 10 fashion categories.
 - The 6 layers CNN model is trained to correctly predict classes for the images.
+- This project has two files both with similar implementation of six layers CNN, R file `Assignment6.R` and Python script `Assignment6.py`
 
-## Requirements
+## 2. R Requirements
 
-- In to successfully run this CNN model, the following software packages should be installed and properly configured:
+- In to successfully run this CNN model in R, the following software packages should be installed and properly configured:
 
 ### R Programming Environment
 - R Version: Install the latest R software which can be dowloaded from the official R website here: https://cran.r-project.org/.
@@ -32,15 +33,16 @@
     ```r
     install.packages("reticulate")
     ```
-## Python requirement
+## 3. Python requirements
+- In to successfully run this CNN model in Python, the following software packages should be installed and properly configured:
+- 
+### Python Programming Environment
+- Python Version: Install Python by downloading it from the official website here: https://www.python.org/downloads/
+- Make sure you install Python 3.x.
 
-- You must have Python installed to run the Python script and so that R can use it to run keras in R environment as keras is a Python library.
-- Install the neccessary Python libraries
-
-#### Steps:
-1. Install Python by downloading it from the official website here: https://www.python.org/downloads/) or by installing  anaconda. Make sure you install Python 3.x.
-2. Install Python Libraries:
-   Inside your Python virtual environment, install the following libraries:
+### Required Python Packages:
+1. Install Python Libraries:
+   Install the following libraries:
    - Keras: Install the latest version of Keras:
      ```bash
      pip install keras
@@ -49,7 +51,7 @@
      ```bash
      pip install tensorflow
      ```
-3. Link R to Python Environment: 
+2. Link R to Python Environment: 
    In R, ensure the Python environment is correctly configured using the `reticulate` package:
    ```r
    library(reticulate)
