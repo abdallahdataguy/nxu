@@ -1,7 +1,7 @@
 # Module 2 Assignment: Salary Function
 
 ## Overview
-- This assignment is about using Python to read and manipulate salary data given as csv file. Data is imported using Python Jupyter notebook, retrieve details of the given employee, process the data and export it as a zipped file containing employee details. Then an accompanying R script is used to read the exported data, extract and display the employee profile.
+- This assignment is about using Python to read and manipulate salary data given as csv file. Data is imported using Python Jupyter notebook, retrieve and process the data and export it as a zipped file containing employee details. Then an accompanying R script is used to read the exported data in a zipped archive and display the employee profile.
 
 ## Files
 - `salary_function.ipynb`: Main program that does data processing.
