@@ -1,7 +1,7 @@
 # Module 2 Assignment: Salary Function
 
 ## Overview
-This assignment is about data processing. 
+- This assignment is about using Python to read and manipulate salary data given as csv file. Data is imported using Python Jupyter notebook, retrieve details of the given employee, process the data and export it as a zipped file containing employee details. Then an accompanying R script is used to read the exported data, extract and display the employee profile.
 
 ## Files
 - `main.py`: Main program.
@@ -16,23 +16,15 @@ This assignment is about data processing.
 - Standard libraries used: `shutil`, `csv` and `pathlib`
 
 ## How to Run
-Ensure the the required packages are installed
-- 
+- Ensure the the required packages are installed
+- Open `salary_function.ipynb` using Jupyter Notebook
+- Run the program cell by cell to see how each step behaves
+  - You can also run entire program by selecting "Run" then "Run All Cells"
+- After the entire notebook script has completed execution, then run the R script `display_employee_profile.R`
 
 ## Approach
-Explain the main steps, methods, or algorithms used and why
-you chose them.
+- Start by running the notebook script first to create a zipped file of the selected employee profile
+- Run the R script after the Python notebook has completed execution to unzip and display the employee details
 
 ## Results
-Summarize the output and how it addresses the assignment.
-Include sample output where useful.
-
-## Limitations
-Describe any assumptions, known issues, or incomplete features.
-
-## References
-Cite datasets, documentation, and other sources used according
-to the required academic referencing style.
-
-## Acknowledgements
-Disclose assistance or AI use if required by the course policy.
+- The R script will unzip the Employee profile, read the Excel file inside it and display the data of the selected Employee
