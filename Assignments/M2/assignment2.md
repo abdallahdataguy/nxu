@@ -4,9 +4,10 @@
 - This assignment is about using Python to read and manipulate salary data given as csv file. Data is imported using Python Jupyter notebook, retrieve details of the given employee, process the data and export it as a zipped file containing employee details. Then an accompanying R script is used to read the exported data, extract and display the employee profile.
 
 ## Files
-- `main.py`: Main program.
-- `requirements.txt`: Required Python packages.
-- `data.csv`: Input dataset, if applicable.
+- `salary_function.ipynb`: Main program that does data processing.
+- `display_employee_profile.R` R script to display employee details
+- `assignment2.md`: This description file.
+- `Total.csv.csv`: Input dataset used.
 
 ## Requirements
 - Python 3.x and Jupyter notebook or any IDE that can execute Python notebooks
