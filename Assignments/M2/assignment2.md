@@ -1,14 +1,7 @@
-# Assignment Title
-
-## Student Details
-- **Name:** Your full name
-- **Student ID:** Your student ID
-- **Course:** Course name and code
-- **Assignment:** Assignment number or title
-- **Submission Date:** YYYY-MM-DD
+# Module 2 Assignment: Salary Function
 
 ## Overview
-Briefly explain the assignment’s purpose and what the code does.
+This assignment is about data processing. 
 
 ## Files
 - `main.py`: Main program.
@@ -17,13 +10,17 @@ Briefly explain the assignment’s purpose and what the code does.
 
 ## Requirements
 - Python 3.x
-- Required packages listed in `requirements.txt`
+- latest version of R (and optionally RStudio IDE)
+- Jupyter notebook or any IDE that can execute Python notebooks
+-   Anaconda distribution is recommended as it comes with everything needed here
+- Required packages: `pandas` is required for this task to run.
+- Standard libraries used: `shutil`, `csv` and `pathlib`
 
 ## How to Run
 Install the required packages:
 
 ```bash
-pip install -r requirements.txt
+pip install pandas
 ```
 
 Run the program:
