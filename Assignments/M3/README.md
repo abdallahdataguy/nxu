@@ -1,37 +1,28 @@
 # Milestone Assignment 1: Policy Management System
 
-This program manages insurance members, products, and payments using three separate classes.
+This program creates a policy management system for an insurance company that facilitates that managing insurance members, products, and payments. It uses thee three different classes to achieve that. 
 
 ## Run it
 
-Install Python 3, extract the submission ZIP, and open a terminal in that folder. Run:
+- Install Python 3.x
+- Put all files in the same folder, open a terminal in that folder and Run the main python file:
 
 ```sh
 python main.py
 ```
-
-No extra packages are needed.
+- No additional packages are needed to run this program. It uses standard python installation
 
 ## Files
 
-- `product.py`: creates, updates, and suspends products.
-- `policyholder.py`: registers, suspends, and reactivates members, and displays account details.
-- `payment.py`: processes a full payment, displays reminders, and adds a late fee.
-- `main.py`: demonstrates the program using two members on the same product.
-- `test_policy_system.py`: checks the main rules. Run with `python -m unittest -v`.
+- `product.py`: facilitates management of products. It implements a class for working with products like creating, updating and suspending them.
+- `policyholder.py`: this file facilites managing members by enabling registering, suspending, and reactivation of members, and also displaying account details.
+- `payment.py`: facilitates processing full payments, displaying reminders, and adding late fees.
+- `main.py`: program demonstration Python file that uses two members on the same product to perform that demo of the program features.
 
 ## How it works
 
-The demo creates a health product and updates its premium to 120. Amina pays 120. David pays 130 after a late fee of 10. Their account details show their names, IDs, status, product, and total paid. Amina is suspended and reactivated. Finally, the product is suspended, and the program rejects a new registration for it.
+The demo creates a health product first and then set its premium as 120. Amina pays 120 and and David pays 130 after a late penalty which is 10. Their account details show names, IDs, statuses and products including total paid. Amina is suspended and then reactivated. The product is finally suspended and the program then rejects a new registration for the same due to that status.
 
-To try other details, edit the names, premium, or dates in `main.py`. Create a member with `Policyholder(id, name)`, call `register(product)`, then create a bill with `Payment(member, due_date)`. Call `process()` to mark that bill fully paid.
+Try playing with this program by changing details in the main.py file such as late fees, add new members, products and amounts and see how it behaves.
 
-## Assumptions
-
-Each member has one product. Product suspension keeps the record but prevents new registrations and payments. Suspended members cannot pay. A payment covers the full bill; partial payments are not included. Calling `process()` twice on the same payment is rejected. Product price changes do not change an existing bill.
-
-The assignment does not give a penalty rule. This example uses a flat fee of 10, applied once to an unpaid overdue bill when `apply_penalty(today)` is called. Pass a second argument to choose a different fee. Dates in the demo are fixed so the result stays the same each time.
-
-Reminders are printed, not sent. Amounts use ordinary Python numbers for this classroom example. Records stay in memory and are lost when the program closes. There is no database or actual payment service.
-
-Submit `Milestone_Assignment_1_Submission.zip`. No GitHub upload has been performed.
+Reminders are not sent but rather just printed. In this demo, amounts use ordinary Python numbers.
