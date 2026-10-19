@@ -18,6 +18,7 @@ python main.py
 - `policyholder.py`: this file facilites managing members by enabling registering, suspending, and reactivation of members, and also displaying account details.
 - `payment.py`: facilitates processing full payments, displaying reminders, and adding late fees.
 - `main.py`: program demonstration Python file that uses two members on the same product to perform that demo of the program features.
+- `README.md`: This description file explaining program functionalities 
 
 ## How it works
 
