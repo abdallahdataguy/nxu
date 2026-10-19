@@ -1,6 +1,6 @@
 # Milestone Assignment 1: Policy Management System
 
-This program creates a policy management system for an insurance company that facilitates managing insurance members, products, and payments. It uses thee three different classes to achieve that. 
+This program creates a policy management system for an insurance company that facilitates managing insurance members, products, and payments. It uses three different classes to achieve that. 
 
 ## Run it
 
