@@ -27,9 +27,12 @@ python Assignment4.py
 
 ## Approach
 - Put all three files (`Assignment4.py`, `Assignment4.R` and `netflix_data.zip`) in the same folder
-- Run, and wait until it completes, the main program file first `Assignment4.py` followed by R script `Assignment4.R`
+- Run the main program file first (`Assignment4.py`) and and wait until its completion followed by R script `Assignment4.R`
 
 
 ## Results
-Summarize the output and how it addresses the assignment.
-Include sample output where useful.
+- Python will unzip the zipped file `netflix_data.zip` and rename the underlying csv file as `Netflix_shows_movies.csv`
+- `Netflix_shows_movies.csv` will be cleaned and saved as `Netflix_shows_movies_cleaned.csv` and genarate analysis tex file named `analysis.txt`
+- Filtered cleansed data summary named `top_genres.csv` will be generated and then the visualization files `genres_python.png`, and `ratings_python.png`
+- R will also recreate an equivalent visualization file named `genres_r.png` from the same `top_genres.csv`
+- All these files will be generated after running these two scripts and when the scripts are rerun they will override the results files.
