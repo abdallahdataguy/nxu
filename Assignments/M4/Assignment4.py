@@ -1,6 +1,6 @@
 # Module 4 Assignment: Netflix Data Visualization
 
-# Import the required libraries and data preparation
+# Import the required libraries
 from pathlib import Path
 import zipfile
 import pandas as pd
@@ -9,6 +9,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Data preparation
 folder = Path(__file__).resolve().parent
 with zipfile.ZipFile(folder / 'netflix_data.zip') as archive:
     (folder / 'Netflix_shows_movies.csv').write_bytes(archive.read('netflix_data.csv'))
