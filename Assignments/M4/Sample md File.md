@@ -22,7 +22,7 @@ pip install pandas matplotlib seaborn
 Run the program:
 
 ```bash
-python main.py
+python Assignment4.py
 ```
 
 ## Approach
