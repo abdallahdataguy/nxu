@@ -3,9 +3,9 @@
 This assignment leverages skills in R and Python to read, cleanse, visualize and analyze Netflix Data and provide visual analytics.
 
 ## Files
-- `Assignment4.py`: Main program.
+- `Assignment4.py`: Main program built using Python.
 - `Assignment4.R`: R script to accompany the main program.
-- `netflix_data.zip`: Input dataset.
+- `netflix_data.zip`: Zipped file containing input csv dataset `netflix_data.csv`.
 
 ## Requirements
 - Python 3.x
