@@ -26,8 +26,9 @@ python Assignment4.py
 ```
 
 ## Approach
-Explain the main steps, methods, or algorithms used and why
-you chose them.
+- Put all three files (`Assignment4.py`, `Assignment4.R` and `netflix_data.zip`) in the same folder
+- Run, and wait until it completes, the main program file first `Assignment4.py` followed by R script `Assignment4.R`
+
 
 ## Results
 Summarize the output and how it addresses the assignment.
