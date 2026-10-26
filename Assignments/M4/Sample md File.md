@@ -1,29 +1,22 @@
-# Assignment Title
-
-## Student Details
-- **Name:** Your full name
-- **Student ID:** Your student ID
-- **Course:** Course name and code
-- **Assignment:** Assignment number or title
-- **Submission Date:** YYYY-MM-DD
-
+# Module 4 Assignment: Netflix Data Visualization
 ## Overview
-Briefly explain the assignment’s purpose and what the code does.
+This assignment leverages skills in R and Python to read, cleanse, visualize and analyze Netflix Data and provide visual analytics.
 
 ## Files
-- `main.py`: Main program.
-- `requirements.txt`: Required Python packages.
-- `data.csv`: Input dataset, if applicable.
+- `Assignment4.py`: Main program.
+- `Assignment4.R`: R script to accompany the main program.
+- `netflix_data.zip`: Input dataset.
 
 ## Requirements
 - Python 3.x
-- Required packages listed in `requirements.txt`
+- R installation
+- Required packages: `pandas`, `matplotlib`, `seaborn`
 
 ## How to Run
 Install the required packages:
 
 ```bash
-pip install -r requirements.txt
+pip install pandas matplotlib seaborn
 ```
 
 Run the program:
@@ -39,13 +32,3 @@ you chose them.
 ## Results
 Summarize the output and how it addresses the assignment.
 Include sample output where useful.
-
-## Limitations
-Describe any assumptions, known issues, or incomplete features.
-
-## References
-Cite datasets, documentation, and other sources used according
-to the required academic referencing style.
-
-## Acknowledgements
-Disclose assistance or AI use if required by the course policy.
