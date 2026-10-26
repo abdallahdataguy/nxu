@@ -10,7 +10,7 @@ This assignment leverages skills in R and Python to read, cleanse, visualize and
 ## Requirements
 - Python 3.x
 - R installation
-- Required packages: `pandas`, `matplotlib`, `seaborn`
+- Required packages: `pandas`, `matplotlib` and `seaborn` plus built-in libraries such as pathlib
 
 ## How to Run
 Install the required packages:
@@ -19,12 +19,8 @@ Install the required packages:
 pip install pandas matplotlib seaborn
 ```
 
-Run the main program:
-
-```bash
-python Assignment4.py
-```
-Run the R file in R (or RStudio)
+- Open the the main program `Assignment4.py` in Python's built-in IDE named IDLE and run the file
+- Run the R file in R after the above Python file has completed execution
 
 ## Approach
 - Put all three files (`Assignment4.py`, `Assignment4.R` and `netflix_data.zip`) in the same folder
