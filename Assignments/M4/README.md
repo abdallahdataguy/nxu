@@ -19,11 +19,12 @@ Install the required packages:
 pip install pandas matplotlib seaborn
 ```
 
-Run the program:
+Run the main program:
 
 ```bash
 python Assignment4.py
 ```
+Run the R file in R (or RStudio)
 
 ## Approach
 - Put all three files (`Assignment4.py`, `Assignment4.R` and `netflix_data.zip`) in the same folder
