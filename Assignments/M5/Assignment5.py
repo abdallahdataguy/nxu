@@ -7,6 +7,8 @@ from pyspark.sql.types import StructType, StructField, StringType, DoubleType
 from pyspark.sql.functions import col, isnan, when, sum as spark_sum
 from pyspark.ml import Pipeline
 from pyspark.ml.feature import Imputer, VectorAssembler, StandardScaler, PCA
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
 folder = Path(__file__).resolve().parent
 spark = (SparkSession.builder.master('local[2]').appName('BreastCancerPCA')
@@ -75,6 +77,19 @@ try:
         lines.append(f'\nTop feature weights for PC{component + 1}:')
         lines.extend(f'{name}: {weight:.4f}' for name, weight in ranked)
     lines.append('\nFeature weights describe variation, not clinical or funding priorities.')
+
+    # Bonus: predict diagnosis using two components and an 80/20 split
+    labeled = data.filter(col('diagnosis').isin('B', 'M')).withColumn(
+        'label', when(col('diagnosis') == 'M', 1.0).otherwise(0.0))
+    train, test = labeled.orderBy('patient_id').randomSplit([0.8, 0.2], seed=42)
+    lr = LogisticRegression(featuresCol='components', labelCol='label', maxIter=100)
+    # Fit imputation, scaling, PCA, and regression on training data only.
+    classifier = Pipeline(stages=[imputer, assembler, scaler, pca, lr]).fit(train)
+    predictions = classifier.transform(test)
+    accuracy = MulticlassClassificationEvaluator(metricName='accuracy').evaluate(predictions)
+    lines.append(f'\nTraining rows: {train.count()}; test rows: {test.count()}')
+    lines.append(f'Logistic regression test accuracy: {accuracy:.2%}')
+
     report = '\n'.join(lines)
     print(report)
     (folder / 'results.txt').write_text(report + '\n', encoding='utf-8')

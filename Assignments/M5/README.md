@@ -2,7 +2,7 @@
 
 ## Files
 
-- `Assignment5.py`: Spark data preparation and two-component PCA.
+- `Assignment5.py`: Spark data preparation, PCA, and logistic regression.
 - `breast_cancer_referrals.csv`: supplied referral records.
 - `README.md`: run instructions.
 
@@ -31,11 +31,15 @@ It runs Spark locally, prints the results, and creates `results.txt`.
 5. Fit PCA with two components and report each explained-variance proportion
    and their total.
 6. Print the five largest absolute feature weights for each component.
+7. For the bonus, split labeled records into approximately 80% training and
+   20% testing (seed 42), predict diagnosis from two components, and report accuracy.
 
 Patient ID and diagnosis are excluded from the feature vector. Missing IDs
-or diagnoses do not affect PCA because they are not predictors. The optional
-logistic regression is omitted. PCA is fitted to the full cleaned dataset
-for descriptive analysis; feature weights are not clinical or funding recommendations.
+or diagnoses do not affect PCA because they are not predictors. PCA is fitted
+to the full cleaned dataset for descriptive analysis. The bonus fits a separate
+imputation, scaling, PCA, and logistic regression pipeline on training data only.
+Diagnosis is encoded as M = 1 and B = 0. Feature weights are not clinical or
+funding recommendations.
 
 ## Results
 
@@ -43,3 +47,5 @@ The 572 input rows become 569 after removing three duplicates. Each of
 mean_radius, mean_texture, and worst_area has six missing values.
 PC1 explains 44.2335% of the variance and PC2 explains 18.9672%,
 giving 63.2007% combined. Tested with PySpark 4.2.0 and Java 21.
+The bonus run used 483 training rows and 86 test rows, with 93.02% test accuracy.
+Spark's random split gives approximate proportions, so the counts are not exactly 80/20.
