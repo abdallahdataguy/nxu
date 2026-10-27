@@ -78,7 +78,7 @@ try:
         lines.extend(f'{name}: {weight:.4f}' for name, weight in ranked)
     lines.append('\nFeature weights describe variation, not clinical or funding priorities.')
 
-    # Bonus step: Predicting diagnosis using two components and an 80/20 split
+    # Bonus: Predicting diagnosis using two PCA component targeting an 80/20 random split
     labeled = data.filter(col('diagnosis').isin('B', 'M')).withColumn(
         'label', when(col('diagnosis') == 'M', 1.0).otherwise(0.0))
     train, test = labeled.orderBy('patient_id').randomSplit([0.8, 0.2], seed=42)
