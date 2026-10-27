@@ -17,6 +17,7 @@ This assignment is about developing a model to address a growing number of refer
 - Install the required packages: 
 - Set JAVA_HOME to your Java installation
 - Make sure that Python and Java are on PATH
+- Run the commands below in terminal
 
 ```powershell
 python -m pip install pyspark numpy
