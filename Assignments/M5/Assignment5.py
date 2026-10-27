@@ -1,6 +1,6 @@
 # Milestone Assignment 2: Principal Component Analysis
 
-# Import libraries and start Spark
+# Importing the required libraries and starting Spark
 from pathlib import Path
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType
@@ -16,7 +16,7 @@ spark = (SparkSession.builder.master('local[2]').appName('BreastCancerPCA')
 spark.sparkContext.setLogLevel('ERROR')
 
 try:
-    # Define the schema and load the referral file
+    # Defining the schema and loading the referral file
     features = [
         'mean_radius', 'mean_texture', 'mean_perimeter', 'mean_area',
         'mean_smoothness', 'mean_compactness', 'mean_concavity',
@@ -36,21 +36,21 @@ try:
     raw = spark.read.csv(str(folder / 'breast_cancer_referrals.csv'),
                          header=True, schema=schema, mode='FAILFAST')
 
-    # Remove duplicates and count missing feature values
+    # Removing duplicates and counting the missing feature values
     data = raw.dropDuplicates().cache()
     missing = data.select([
         spark_sum(when(col(name).isNull() | isnan(col(name)), 1).otherwise(0)).alias(name)
         for name in features
     ]).first().asDict()
 
-    # Fill missing features, assemble and standardize them
+    # Filling missing features, assembling and standardizing them
     filled = [name + '_filled' for name in features]
     imputer = Imputer(inputCols=features, outputCols=filled, strategy='median').setRelativeError(0)
     assembler = VectorAssembler(inputCols=filled, outputCol='features')
     scaler = StandardScaler(inputCol='features', outputCol='scaled',
                             withMean=True, withStd=True)
 
-    # Reduce the standardized features to two components
+    # Reducing the standardized features to two components using PCA
     pca = PCA(k=2, inputCol='scaled', outputCol='components')
     pipeline = Pipeline(stages=[imputer, assembler, scaler, pca])
     model = pipeline.fit(data)
@@ -58,7 +58,7 @@ try:
     pca_model = model.stages[-1]
     variance = pca_model.explainedVariance.toArray()
 
-    # Report explained variance and the largest feature weights
+    # Reporting explained variance and the largest feature weights
     lines = [
         f'Input rows: {raw.count()}',
         f'Cleaned rows: {data.count()}',
@@ -78,11 +78,12 @@ try:
         lines.extend(f'{name}: {weight:.4f}' for name, weight in ranked)
     lines.append('\nFeature weights describe variation, not clinical or funding priorities.')
 
-    # Bonus: predict diagnosis using two components and an 80/20 split
+    # Bonus step: Predicting diagnosis using two components and an 80/20 split
     labeled = data.filter(col('diagnosis').isin('B', 'M')).withColumn(
         'label', when(col('diagnosis') == 'M', 1.0).otherwise(0.0))
     train, test = labeled.orderBy('patient_id').randomSplit([0.8, 0.2], seed=42)
     lr = LogisticRegression(featuresCol='components', labelCol='label', maxIter=100)
+    
     # Fit imputation, scaling, PCA, and regression on training data only.
     classifier = Pipeline(stages=[imputer, assembler, scaler, pca, lr]).fit(train)
     predictions = classifier.transform(test)
