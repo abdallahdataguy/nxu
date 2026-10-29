@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+venv/
+.venv/
+.git/
+sample_request.py
+README.md
+*.json

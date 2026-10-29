@@ -1,0 +1,9 @@
+$accuracy
+[1] 0.8912
+
+$loss
+[1] 0.3123892
+
+  image     actual  predicted
+1     1 Ankle boot Ankle boot
+2     2   Pullover   Pullover
