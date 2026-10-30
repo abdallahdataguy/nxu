@@ -127,21 +127,6 @@ If a request fails, check `docker logs fashion-m6`. If the container name is
 already in use, remove it with `docker rm -f fashion-m6` before running it again.
 Stop it when finished with `docker stop fashion-m6`.
 
-## Submission
-
-Include this folder with both scripts, results, sample images, service files,
-trained model, and both Docker screenshots. Leave out virtual environments
-and `__pycache__` folders.
-
-From the parent `M6` folder, create the submission archive:
-
-```powershell
-Compress-Archive -Path ./solution -DestinationPath ./Module_6_Submission.zip -Force
-```
-
-Check that the ZIP includes `fashion_cnn.keras` and both screenshots, then
-upload `Module_6_Submission.zip` to the assignment portal.
-
 ## References
 
 - [Keras Fashion MNIST dataset](https://keras.io/api/datasets/fashion_mnist/)
