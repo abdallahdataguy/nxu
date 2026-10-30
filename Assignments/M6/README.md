@@ -53,10 +53,10 @@ python -m pip install -r fashion-mnist-service/requirements.txt
 python Assignment6.py
 ```
 
-The first run downloads Fashion MNIST through Keras. The script trains the model,
-prints its accuracy, and saves the results, sample images, and
-`fashion-mnist-service/fashion_cnn.keras`. Rerunning it replaces these files.
-The saved model is already included, so retraining is optional when testing the API.
+- When executed for the first time it will downloads the Fashion MNIST through Keras. 
+- The script trains the model then prints its accuracy, and saves the results, sample images, and
+`fashion-mnist-service/fashion_cnn.keras`.
+- If you Rerun it the program will replace the above files created on-the-fly during the program execution.
 
 ## Run R
 
@@ -74,9 +74,7 @@ $env:RETICULATE_PYTHON = (python -c "import sys; print(sys.executable)")
 Rscript Assignment6.R
 ```
 
-If `Rscript` is not on PATH, use its full installation path.
-R trains its own model and saves the accuracy and predictions in `r_results.txt`.
-It does not overwrite the Python model used by the service.
+R trains its own model and saves the accuracy and predictions in `r_results.txt` text file without overwriting the Python model used by the service.
 
 ## Test the local API
 
@@ -84,12 +82,12 @@ It does not overwrite the Python model used by the service.
 python -m uvicorn main:app --app-dir fashion-mnist-service --host 127.0.0.1 --port 8000
 ```
 
-Leave the terminal open. Visit http://localhost:8000/docs, select POST `/predict`,
+Make sure the terminal is open and visit the link http://localhost:8000/docs, select POST `/predict`,
 click **Try it out**, upload a sample PNG, and click **Execute**.
-Repeat with the other sample. A successful response shows code 200, the class,
+Repeat with the other sample and confirm that the response is successful by checking the HTTP response code 2000, the class,
 and confidence.
 
-You can also test from a second terminal with the Python environment active:
+You can also test using a terminal, second terminal, while the Python environment active by executing the following commands to test the two sample files:
 
 ```powershell
 python fashion-mnist-service/sample_request.py samples/image_1.png
@@ -98,7 +96,7 @@ python fashion-mnist-service/sample_request.py samples/image_2.png
 
 ## Run with Docker
 
-Start Docker Desktop and wait for its engine to be ready. From `solution`, run:
+Start Docker Desktop and wait until its engine is up and running then execute the following commands in terminal:
 
 ```powershell
 docker build -t fashion-mnist-m6 ./fashion-mnist-service
@@ -106,21 +104,17 @@ docker run -d --name fashion-m6 -p 8001:8000 fashion-mnist-m6
 docker ps --filter name=fashion-m6
 ```
 
-Open http://localhost:8001/docs and upload each sample using POST `/predict`.
+Then open http://localhost:8001/docs and upload each sample using POST `/predict`.
 Port 8001 is used for Docker; port 8000 is used for the local Python service.
-The API applies the same grayscale conversion, image size, and normalization
+The API applies the same image conversion, resizing, and normalization
 used during training.
 
-To test the container from the terminal:
+You can also test the container from the terminal directly by issuing the following commands:
 
 ```powershell
 python fashion-mnist-service/sample_request.py samples/image_1.png --url http://localhost:8001/predict
 python fashion-mnist-service/sample_request.py samples/image_2.png --url http://localhost:8001/predict
 ```
-
-If a request fails, check `docker logs fashion-m6`. If the container name is
-already in use, remove it with `docker rm -f fashion-m6` before running it again.
-Stop it when finished with `docker stop fashion-m6`.
 
 ## References
 
