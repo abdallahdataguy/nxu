@@ -7,7 +7,7 @@ This project classifies clothing images using a six-layer convolutional neural n
 - `Assignment6.py`: The main Python program containing Python CNN class, training, evaluation, and two predictions.
 - `Assignment6.R`: Equivalent R program containing R6 class with the same CNN structure.
 - `fashion-mnist-service/`: trained model, FastAPI app, Dockerfile, dependencies, and request script.
-- `samples/`: This subfolder contains the two test images used for predictions.
+- `samples/`: This subfolder contains the two test images used for predictions created during `Assignment6.py` execution
 - `python_results.json` and `r_results.txt`: model results using Python and R respectively.
 - `docker_prediction_1.png` and `docker_prediction_2.png`: The screenshots of the successful predictions using docker service on port 8001.
 
