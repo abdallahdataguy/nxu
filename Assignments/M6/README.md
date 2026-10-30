@@ -1,17 +1,15 @@
 ﻿# Module 6: Fashion MNIST Classification
 
-This project classifies clothing images using a six-layer CNN in Python and R.
-The trained Python model is also served through FastAPI and Docker.
+This project classifies clothing images using a six-layer convolutional neural network CNN in Python and R.
 
 ## Files
 
-- `Assignment6.py`: Python CNN class, training, evaluation, and two predictions.
-- `Assignment6.R`: R6 class with the same CNN structure.
+- `Assignment6.py`: The main Python program containing Python CNN class, training, evaluation, and two predictions.
+- `Assignment6.R`: Equivalent R program containing R6 class with the same CNN structure.
 - `fashion-mnist-service/`: trained model, FastAPI app, Dockerfile, dependencies, and request script.
-- `samples/`: the two test images used for predictions.
-- `python_results.json` and `r_results.txt`: model results.
-- `local_api_results.txt`: responses from testing the local API.
-- `docker_prediction_1.png` and `docker_prediction_2.png`: successful predictions from the Docker service on port 8001.
+- `samples/`: This subfolder contains the two test images used for predictions.
+- `python_results.json` and `r_results.txt`: model results using Python and R respectively.
+- `docker_prediction_1.png` and `docker_prediction_2.png`: The screenshots of the successful predictions using docker service on port 8001.
 
 ## Model and results
 
@@ -28,13 +26,10 @@ The input shape is 28 x 28 x 1. Pixel values are divided by 255.
 Training uses Adam and sparse categorical cross-entropy for five epochs.
 There are 54,000 training images, 6,000 validation images, and 10,000 test images.
 
-| Model | Test accuracy |
-|---|---|
-| Python | 89.05% |
-| R | 89.12% |
+Model test accuracy: 89.05% and 89.12% for Python and R respectively 
 
-Both models correctly predicted the two sample images as Ankle boot and Pullover.
-The Docker API returned HTTP 200 for both uploads, as shown in the screenshots.
+Both models predicted the two sample images as Ankle boot and Pullover correctly.
+Check the results returned by Docker API (HTTP 200) for both uploads in the screenshots.
 
 ## Setup
 
@@ -46,7 +41,7 @@ conda create -n fashion-m6 python=3.11 -y
 conda activate fashion-m6
 ```
 
-Run the following commands from the `solution` folder with that environment active:
+Execute the command below from the `solution` folder with the above environment activated:
 
 ```powershell
 python -m pip install -r fashion-mnist-service/requirements.txt
