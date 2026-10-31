@@ -1,9 +1,6 @@
-# Healthcare Spending Survey
+# BAN6420 Programming in R & Python: Final Project - Healthcare Spending Survey
 
-**BAN6420 Programming in R & Python: Final Project**
-Abdallah Ally Abdallah · Nexford University
-
-For this project I built a small survey tool for a (fictional) data analysis company in Washington, DC that is getting ready to launch a healthcare product. People fill in a web form with their age, gender, monthly income and what they spend money on. The answers are saved in MongoDB, exported to a CSV file through a Python `User` class, and analysed in a Jupyter notebook. The finished app runs on AWS.
+For this project I built a small survey tool for a fictional data analysis company in Washington, DC that is preparing to launch a healthcare product. People fill in a web form with their age, gender, monthly income and what they spend money on. The answers are saved in online MongoDB database, exported to a CSV file through a Python `User` class, and analyzed in a Jupyter notebook. The finished app runs on AWS EC2 instance.
 
 - **Live app:** <http://16.192.107.188/>
 - **Code:** <https://github.com/abdallahdataguy/nxu/tree/main/Assignments/FinalProject>
