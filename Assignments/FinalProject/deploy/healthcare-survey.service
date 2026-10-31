@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn server for the Healthcare Spending Survey (Flask)
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/healthcare-survey
+EnvironmentFile=/home/ubuntu/healthcare-survey/.env
+ExecStart=/home/ubuntu/healthcare-survey/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

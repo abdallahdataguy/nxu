@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Healthcare Spending Survey</h1>
+<p class="intro">Help us understand how people spend their income. Your answers are anonymous.</p>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="errors">
+      {% for category, message in messages %}<li>{{ message }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<form method="post" novalidate>
+  <label for="age">Age</label>
+  <input type="number" id="age" name="age" min="1" max="120" required value="{{ form.get('age', '') }}">
+
+  <label for="gender">Gender</label>
+  <select id="gender" name="gender" required>
+    <option value="">-- Select --</option>
+    {% for g in genders %}
+      <option value="{{ g }}" {% if form.get('gender') == g %}selected{% endif %}>{{ g }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="total_income">Total Monthly Income ($)</label>
+  <input type="number" id="total_income" name="total_income" min="0" step="0.01" required value="{{ form.get('total_income', '') }}">
+
+  <fieldset>
+    <legend>Monthly Expenses</legend>
+    <p class="hint">Tick each category you spend on and enter the amount.</p>
+    {% for key, label in categories %}
+      <div class="expense-row">
+        <label class="check">
+          <input type="checkbox" name="category_{{ key }}" id="category_{{ key }}" data-target="amount_{{ key }}"
+                 {% if form.get('category_' ~ key) %}checked{% endif %}>
+          {{ label }}
+        </label>
+        <input type="number" name="amount_{{ key }}" id="amount_{{ key }}" min="0" step="0.01"
+               placeholder="Amount ($)" aria-label="{{ label }} amount" value="{{ form.get('amount_' ~ key, '') }}">
+      </div>
+    {% endfor %}
+  </fieldset>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  // Enable each amount box only when its checkbox is ticked.
+  document.querySelectorAll('.expense-row input[type=checkbox]').forEach(function (box) {
+    var amount = document.getElementById(box.dataset.target);
+    function sync() {
+      amount.disabled = !box.checked;
+      amount.required = box.checked;
+      if (!box.checked) amount.value = '';
+    }
+    box.addEventListener('change', sync);
+    sync();
+  });
+</script>
+{% endblock %}

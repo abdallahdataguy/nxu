@@ -1,0 +1,13 @@
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.pem
+atlas-credentials.env
+
+# Editor settings and local reference files
+*.docx
+~$*
+.vscode/

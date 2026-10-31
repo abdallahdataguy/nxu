@@ -1,0 +1,5 @@
+# Web app (this is all the AWS server needs)
+Flask>=3.0
+pymongo>=4.6
+python-dotenv>=1.0
+gunicorn>=22.0; platform_system != "Windows"

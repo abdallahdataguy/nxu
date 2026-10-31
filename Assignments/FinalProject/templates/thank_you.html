@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Thank You{% endblock %}
+{% block content %}
+<h1>Thank you!</h1>
+<p>Your response has been recorded.</p>
+<a class="button" href="{{ url_for('index') }}">Submit another response</a>
+{% endblock %}
