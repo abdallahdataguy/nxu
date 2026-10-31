@@ -7,14 +7,14 @@ Browser ──HTTP:80──▶ Nginx ──▶ Gunicorn :8000 ──▶ Flask ap
                     └────────────── EC2 instance (Ubuntu) ──────────────┘
 ```
 
-It took me around an hour the first time, mostly because of the issues listed in [Things that tripped me up](#things-that-tripped-me-up).
+It took me around an hour the first time, mostly because of the issues listed in [Problems I ran into](#problems-i-ran-into).
 
-**What you need first:**
+**What I needed before starting:**
 - An AWS account (<https://aws.amazon.com/free>). It has to be a full AWS account. An "AWS Builder ID" won't let you launch servers.
 - A MongoDB Atlas account (<https://www.mongodb.com/cloud/atlas/register>)
 - The project pushed to GitHub (Step 2)
 
-> **Cost:** a `t3.micro` server and the Atlas M0 cluster are both free-tier eligible. AWS does charge a small amount for public IPv4 addresses, including Elastic IPs (about $3.60 a month each). Step 11 covers shutting everything down afterwards.
+> **Cost:** a `t3.micro` server and the Atlas M0 cluster are both free-tier eligible. AWS does charge a small amount for public IPv4 addresses, including Elastic IPs (about $3.60 a month each), so I'll shut everything down once the project is finished (Step 11).
 
 ---
 
@@ -26,7 +26,7 @@ It took me around an hour the first time, mostly because of the issues listed in
    - Username: something like `survey_app`
    - Password: letters and numbers only. Symbols like `@` or `:` break the connection string unless you encode them.
    - Role: **Read and write to any database**
-3. **Network access:** go to **Security → Network Access → Add IP Address → Add Current IP Address** so your own computer can connect. The server's IP gets added in Step 5.
+3. **Network access:** go to **Security → Network Access → Add IP Address → Add Current IP Address** so my own computer could connect. The server's IP gets added in Step 5.
 4. **Connection string:** **Connect → Drivers → Python**. It looks like this:
    ```
    mongodb+srv://survey_app:<db_password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
@@ -75,13 +75,13 @@ A new server's public IP changes every time it stops and starts, so it needs a f
 
 In Atlas, **Security → Network Access → Add IP Address** → enter the Elastic IP with `/32` on the end (`16.192.107.188/32`) → **Confirm**.
 
-Keep your own computer's IP on the list too if you want to run `export_to_csv.py` locally.
+I kept my own computer's IP on the list as well, so I could still run `export_to_csv.py` locally.
 
 ## Step 6: Connect to the server
 
 **Option A: in the browser.** Select the instance → **Connect → EC2 Instance Connect → Connect**.
 
-This failed for me at first with *"Error establishing SSH connection"*. The browser connection actually comes from AWS's own servers, not from my computer, so the **My IP** rule blocks it. The fix is a second inbound SSH rule in the security group, with its source set to **com.amazonaws.eu-north-1.ec2-instance-connect**. Type `ec2-instance-connect` in the source box to find it, and pick your own region's entry if you're not in Stockholm.
+This failed for me at first with *"Error establishing SSH connection"*. The browser connection actually comes from AWS's own servers, not from my computer, so the **My IP** rule blocks it. The fix is a second inbound SSH rule in the security group, with its source set to **com.amazonaws.eu-north-1.ec2-instance-connect**. Typing `ec2-instance-connect` in the source box brings it up (each region has its own entry).
 
 **Option B: from PowerShell on Windows.**
 ```powershell
@@ -158,32 +158,40 @@ sudo systemctl restart nginx
 2. Fill in the form and submit. You should see the "Thank you!" page.
 3. Refresh the `users` collection in Atlas. The new response is at the bottom.
 
-To update the app after pushing changes to GitHub:
+Whenever I push changes to GitHub, I update the server with:
 ```bash
 cd ~/nxu && git pull
 cd ~/healthcare-survey && source venv/bin/activate && pip install -r requirements.txt
 sudo systemctl restart healthcare-survey
 ```
 
-## Step 11: Shut it down after grading
+## Step 11: Shutting it down
+
+The server stays up while the project is being reviewed. After that, I'll take it down so it stops costing money:
 
 1. **EC2 → Instances** → select the instance → **Instance state → Terminate**.
-2. **EC2 → Elastic IPs** → select the address → **Actions → Release Elastic IP address**. It keeps costing money until it's released.
-3. Optionally delete the Atlas cluster as well.
+2. **EC2 → Elastic IPs** → select the address → **Actions → Release Elastic IP address**. An Elastic IP keeps costing money until it's released, even with no server attached.
+3. The Atlas M0 cluster is free, so it can stay or be deleted.
 
 ---
 
-## Things that tripped me up
+## Problems I ran into
 
-| What happened | Why, and how I fixed it |
+| What happened | What caused it, and the fix |
 |---|---|
-| The browser just timed out on the site's address | Port 80 wasn't open. In the instance's security group, add an inbound rule: **HTTP, port 80, source 0.0.0.0/0**. Also make sure the address starts with `http://`. |
-| EC2 Instance Connect: *"Error establishing SSH connection"* | The SSH rule only allowed my IP. Add the `ec2-instance-connect` rule for your region (Step 6). |
-| SSH stopped working after I changed location | My home IP isn't fixed. Edit the SSH rule and set the source to **My IP** again. |
-| `export_to_csv.py` failed locally with `SSL handshake failed ... tlsv1 alert internal error` | Despite the wording, this means Atlas doesn't recognise your IP. Add your current IP under **Network Access**. |
-| The service wouldn't start | A test copy of Gunicorn was still using port 8000. `pkill gunicorn`, then start the service again. |
-| **502 Bad Gateway** | Nginx is fine, but the app isn't running. Check `sudo systemctl status healthcare-survey` and `sudo journalctl -u healthcare-survey -n 50`. |
-| `bad auth : authentication failed` | Wrong username or password in `MONGO_URI`, or the password has special characters. After fixing `.env`, run `sudo systemctl restart healthcare-survey`. |
-| SSH: `UNPROTECTED PRIVATE KEY FILE` | Run the `icacls` command from Step 6. |
-| `pip install` failed on Windows with *"Microsoft Visual C++ 14.0 or greater is required"* | I'd made the local venv with Python 3.15, which is too new for some packages. Recreating it with Python 3.11 fixed it. |
-| `pip install` failed on Windows with *"No such file or directory"* on a very long path | Windows' 260-character path limit. Turn on long paths (`LongPathsEnabled` in the registry, as admin) or put the venv in a short folder like `C:\venvs\`. |
+| `pip install` failed on Windows with *"Microsoft Visual C++ 14.0 or greater is required"* | I'd made the local venv with Python 3.15, which is too new for some packages (PyYAML had no ready-made installer). Recreating the venv with Python 3.11 fixed it. |
+| `pip install` then failed with *"No such file or directory"* on a very long path | My project folder's path is long, and one Jupyter file pushed it past Windows' 260-character limit. Turning on long paths (`LongPathsEnabled` in the registry, as admin) or keeping the venv in a short folder like `C:\venvs\` gets around it. |
+| EC2 Instance Connect: *"Error establishing SSH connection"* | My SSH rule only allowed my own IP, and the browser connection comes from AWS. Adding the `ec2-instance-connect` rule (Step 6) fixed it. |
+| I accidentally created five Elastic IPs | I kept one, attached it to the server, and released the other four, since each one is billed. |
+| The site timed out in the browser | The server wasn't reachable on port 80 yet. The security group needs an inbound rule for **HTTP, port 80, from 0.0.0.0/0**, and the address has to start with `http://`. |
+| `export_to_csv.py` stopped working locally with `SSL handshake failed ... tlsv1 alert internal error` | Despite the wording, Atlas just didn't recognise my IP any more. Adding my current IP under **Network Access** fixed it. |
+
+## Other errors worth knowing about
+
+These didn't happen to me, but they're common with this setup:
+
+- **502 Bad Gateway:** Nginx is fine but the app isn't running. `sudo systemctl status healthcare-survey` and `sudo journalctl -u healthcare-survey -n 50` show why.
+- **The service won't start:** often a test copy of Gunicorn still holding port 8000. `pkill gunicorn`, then start the service again.
+- **`bad auth : authentication failed`:** wrong username or password in `MONGO_URI`, or a password with special characters. After fixing `.env`, run `sudo systemctl restart healthcare-survey`.
+- **SSH stops working after moving to a different network:** the SSH rule is tied to one IP. Set its source to **My IP** again.
+- **SSH: `UNPROTECTED PRIVATE KEY FILE`:** run the `icacls` command from Step 6.
