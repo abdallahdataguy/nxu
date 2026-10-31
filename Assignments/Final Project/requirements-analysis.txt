@@ -1,6 +1,0 @@
-# Data analysis in the Jupyter notebook (install on your own computer)
--r requirements.txt
-pandas>=2.1
-matplotlib>=3.8
-seaborn>=0.13
-notebook>=7.0
