@@ -180,7 +180,7 @@ The server stays up while the project is being reviewed. After that, I'll take i
 | What happened | What caused it, and the fix |
 |---|---|
 | `pip install` failed on Windows with *"Microsoft Visual C++ 14.0 or greater is required"* | I'd made the local venv with Python 3.15, which is too new for some packages (PyYAML had no ready-made installer). Recreating the venv with Python 3.11 fixed it. |
-| `pip install` then failed with *"No such file or directory"* on a very long path | My project folder's path is long, and one Jupyter file pushed it past Windows' 260-character limit. Turning on long paths (`LongPathsEnabled` in the registry, as admin) or keeping the venv in a short folder like `C:\venvs\` gets around it. |
+| `pip install` then failed with *"No such file or directory"* on a very long path | My project folder's path is long, and one Jupyter file pushed it past Windows' 260-character limit. I turned on long path support by setting `LongPathsEnabled` to 1 in the registry from an admin PowerShell, restarted VS Code, rebuilt the venv, and the install went through. |
 | EC2 Instance Connect: *"Error establishing SSH connection"* | My SSH rule only allowed my own IP, and the browser connection comes from AWS. Adding the `ec2-instance-connect` rule (Step 6) fixed it. |
 | I accidentally created five Elastic IPs | I kept one, attached it to the server, and released the other four, since each one is billed. |
 | The site timed out in the browser | The server wasn't reachable on port 80 yet. The security group needs an inbound rule for **HTTP, port 80, from 0.0.0.0/0**, and the address has to start with `http://`. |
