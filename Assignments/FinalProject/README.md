@@ -9,7 +9,7 @@ For this project I built a small survey tool for a fictional data analysis compa
 
 ## Screenshots
 
-**The survey form running on AWS.** Each expense category has a checkbox; ticking it unlocks the amount box next to it.
+**The survey form running on AWS.** Each expense category has a checkbox. Tick to activate the amount box next to it for entering data.
 
 ![Live survey form](screenshots/01_live_survey_form.png)
 
@@ -66,7 +66,7 @@ For this project I built a small survey tool for a fictional data analysis compa
 
 ## Running it on your own computer
 
-**You'll need** Python 3.10–3.12 (I used 3.11; on Python 3.15 some packages, PyYAML for one, don't have ready-made Windows installers yet and fail to install) and a MongoDB database. A free [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) cluster works, and so does a local MongoDB install.
+**You'll need** Python 3.10–3.12 (I used 3.11; on Python 3.15 some packages, PyYAML for one, don't have ready-made Windows installers yet and fail to install) and a MongoDB database. A free [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) cluster works, as well as a local MongoDB install.
 
 **1. Set up a virtual environment and install the packages**
 
@@ -77,7 +77,7 @@ source venv/bin/activate         # macOS / Linux
 pip install -r requirements-analysis.txt
 ```
 
-If PowerShell says running scripts is disabled, run `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` once and try again.
+If PowerShell says running scripts is disabled, run `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` once and try again or use command prompt.
 
 **2. Add your settings**
 
@@ -85,7 +85,7 @@ Copy `.env.example` to `.env` and fill in:
 - `MONGO_URI`: your connection string, e.g. `mongodb://localhost:27017/` or `mongodb+srv://<user>:<password>@<cluster>.mongodb.net/`
 - `FLASK_SECRET_KEY`: any long random string. `python -c "import secrets; print(secrets.token_hex(32))"` will make one for you.
 
-You don't need to create the database in advance. MongoDB creates `healthcare_survey` the first time a response is saved.
+You don't need to create the database in advance. MongoDB creates `healthcare_survey` automatically for you the first time a response is saved.
 
 **3. Start the app**
 
@@ -93,11 +93,11 @@ You don't need to create the database in advance. MongoDB creates `healthcare_su
 python app.py
 ```
 
-Then open <http://127.0.0.1:5000> in your browser and fill in the form. A few things it checks: age and income are required, amounts can't be negative, and if you tick a category you have to enter an amount. Unticked categories are saved as 0.
+Then open <http://127.0.0.1:5000> in your browser and locally fill in the form. A few things it checks: age and income are required, amounts can't be negative, and if you tick a category you have to enter an amount. Categories that are not ticked are automatically saved as 0.
 
 **4. (Optional) Add test data**
 
-A handful of responses makes for pretty empty charts, so there's a script that adds random ones:
+There is a script that adds random 200 responses. Add few responses for experimenting the survey tool:
 
 ```bash
 python seed_data.py 200
@@ -118,7 +118,7 @@ This goes through every document in MongoDB, turns each one into a `User` object
 jupyter notebook analysis.ipynb
 ```
 
-Choose **Run → Run All Cells**. The charts show up in the notebook and are saved to `charts/`. To use them in PowerPoint: **Insert → Pictures → This Device**.
+Choose **Run → Run All Cells**. The charts show up in the notebook and are saved to `charts/` ready to be used in PowerPoint.
 
 ## The `User` class
 
